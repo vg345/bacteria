@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://mdr7lglv5lfn"]
+
+[ext_resource type="Script" uid="uid://cr11dku2surbh" path="res://scripts/bacteria.gd" id="1_lcq1f"]
+[ext_resource type="Texture2D" uid="uid://c548bt337iv6k" path="res://assets/plain_circle.png" id="1_t3sbu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcq1f"]
+radius = 190.1289
+
+[node name="bacteria" type="Node2D" unique_id=1054603952]
+script = ExtResource("1_lcq1f")
+
+[node name="base" type="Sprite2D" parent="." unique_id=1259690285]
+texture = ExtResource("1_t3sbu")
+
+[node name="spokes" type="Node2D" parent="." unique_id=1724376348]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=51943387]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=236984425]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_lcq1f")

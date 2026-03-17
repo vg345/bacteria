@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://7y7tcum5y3t5" path="res://assets/plain_sq.png" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cghpxw2oxyaqt" path="res://assets/petridish.png" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c0awa7ayit3qx" path="res://scenes/player.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://mdr7lglv5lfn" path="res://scenes/bacteria.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://brsk7o2fevix2" path="res://scenes/plasmid.tscn" id="6_tefeu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tbgi4"]
 font_size = 40
@@ -30,7 +32,7 @@ texture = ExtResource("3_jyhfs")
 
 [node name="player" parent="." unique_id=1775131467 instance=ExtResource("4_jyhfs")]
 unique_name_in_owner = true
-position = Vector2(1108, 576)
+position = Vector2(1012, 533)
 scale = Vector2(0.3, 0.3)
 
 [node name="Button" type="Button" parent="." unique_id=820160373]
@@ -94,6 +96,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="mark1" type="Marker2D" parent="." unique_id=1064955062]
+unique_name_in_owner = true
 
 [node name="mark2" type="Marker2D" parent="." unique_id=1334271505]
+unique_name_in_owner = true
 position = Vector2(1575, 1059)
+
+[node name="bacteria" parent="." unique_id=1054603952 instance=ExtResource("5_tbgi4")]
+position = Vector2(400.99997, 434.99997)
+scale = Vector2(0.2, 0.2)
+
+[node name="plasmid" parent="." unique_id=1192148719 instance=ExtResource("6_tefeu")]
+position = Vector2(315.99997, 280.99997)

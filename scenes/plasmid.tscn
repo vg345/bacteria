@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://brsk7o2fevix2"]
+
+[ext_resource type="Script" uid="uid://coyiw1fbqn451" path="res://scripts/plasmid.gd" id="1_qjutl"]
+[ext_resource type="Texture2D" uid="uid://vbe4a8f4y6ie" path="res://assets/plasmid1.png" id="2_kl1lu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww1bg"]
+radius = 231.31148
+
+[sub_resource type="Animation" id="Animation_kl1lu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_ww1bg"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.07, 0.07), Vector2(0.17, 0.17), Vector2(0.07, 0.07), Vector2(0.17, 0.17)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_513uf"]
+_data = {
+&"RESET": SubResource("Animation_kl1lu"),
+&"idle": SubResource("Animation_ww1bg")
+}
+
+[node name="plasmid" type="Node2D" unique_id=1192148719]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_qjutl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=542887258]
+position = Vector2(-15.000004, 10.00001)
+scale = Vector2(1.0351563, 1.0546875)
+texture = ExtResource("2_kl1lu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=593399191]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=523546186]
+position = Vector2(9.536743e-07, -9.536743e-07)
+shape = SubResource("CircleShape2D_ww1bg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1044767514]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_513uf")
+speed_scale = 0.5
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

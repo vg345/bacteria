@@ -13,7 +13,7 @@ radius = 193.02332
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
 radius = 302.10593
 
-[node name="player" type="CharacterBody2D" unique_id=1775131467]
+[node name="player" type="Node2D" unique_id=558306380]
 script = ExtResource("1_qlg0r")
 
 [node name="base" type="Sprite2D" parent="." unique_id=1376039644]
@@ -54,6 +54,7 @@ texture = ExtResource("3_tuyoq")
 [node name="border6" type="Sprite2D" parent="." unique_id=1195619631]
 visible = false
 rotation = -2.3561945
+scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("3_tuyoq")
 
 [node name="border7" type="Sprite2D" parent="." unique_id=1542501147]
