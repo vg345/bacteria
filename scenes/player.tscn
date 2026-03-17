@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c0awa7ayit3qx"]
+
+[ext_resource type="Texture2D" uid="uid://7y7tcum5y3t5" path="res://assets/plain.png" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://yf2dvwjivr4" path="res://scripts/player.gd" id="1_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://djavp5bg2atrw" path="res://assets/shield2.png" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://devyb8aac0tl1" path="res://assets/type1.png" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://c8fj44gyvqfii" path="res://assets/shading2.png" id="4_qlg0r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tuyoq"]
+radius = 193.02332
+
+[node name="player" type="CharacterBody2D" unique_id=1775131467]
+script = ExtResource("1_qlg0r")
+
+[node name="base" type="Sprite2D" parent="." unique_id=1376039644]
+texture = ExtResource("1_dqkch")
+
+[node name="shield" type="Sprite2D" parent="." unique_id=1191891928]
+modulate = Color(1, 1, 1, 0.5019608)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_dqkch")
+
+[node name="border1" type="Sprite2D" parent="." unique_id=48945262]
+texture = ExtResource("3_tuyoq")
+
+[node name="border2" type="Sprite2D" parent="." unique_id=1926588983]
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_tuyoq")
+
+[node name="border3" type="Sprite2D" parent="." unique_id=2106795678]
+rotation = 1.5707964
+texture = ExtResource("3_tuyoq")
+
+[node name="border4" type="Sprite2D" parent="." unique_id=1120075999]
+rotation = 2.5307274
+texture = ExtResource("3_tuyoq")
+
+[node name="border5" type="Sprite2D" parent="." unique_id=264167336]
+rotation = -3.1415925
+texture = ExtResource("3_tuyoq")
+
+[node name="border6" type="Sprite2D" parent="." unique_id=1195619631]
+rotation = -2.3561945
+texture = ExtResource("3_tuyoq")
+
+[node name="border7" type="Sprite2D" parent="." unique_id=1542501147]
+rotation = -1.5707964
+texture = ExtResource("3_tuyoq")
+
+[node name="border8" type="Sprite2D" parent="." unique_id=1262912712]
+rotation = -0.7853983
+texture = ExtResource("3_tuyoq")
+
+[node name="shading" type="Sprite2D" parent="." unique_id=697907163]
+texture = ExtResource("4_qlg0r")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=298501864]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=340701587]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_tuyoq")
