@@ -1,6 +1,99 @@
 [gd_scene format=3 uid="uid://nplrcem5jc7d"]
 
 [ext_resource type="Script" uid="uid://by3jaj6t1ygaa" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://7y7tcum5y3t5" path="res://assets/plain_sq.png" id="2_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cghpxw2oxyaqt" path="res://assets/petridish.png" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c0awa7ayit3qx" path="res://scenes/player.tscn" id="4_jyhfs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbgi4"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_jyhfs"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
+font_size = 40
 
 [node name="main" type="Node2D" unique_id=1435284343]
 script = ExtResource("1_o5qli")
+
+[node name="bg" type="Sprite2D" parent="." unique_id=1390771970]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(966.5, 542)
+scale = Vector2(10.909604, 6.169492)
+texture = ExtResource("2_sugp2")
+
+[node name="petridish" type="Sprite2D" parent="." unique_id=2049238219]
+visible = false
+position = Vector2(923, 547)
+texture = ExtResource("3_jyhfs")
+
+[node name="player" parent="." unique_id=1775131467 instance=ExtResource("4_jyhfs")]
+unique_name_in_owner = true
+position = Vector2(1108, 576)
+scale = Vector2(0.3, 0.3)
+
+[node name="Button" type="Button" parent="." unique_id=820160373]
+offset_left = 1567.0
+offset_top = 21.0
+offset_right = 1896.0
+offset_bottom = 135.0
+
+[node name="Label" type="Label" parent="Button" unique_id=1313850707]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.024
+anchor_top = -0.20600002
+anchor_right = -0.024
+anchor_bottom = -0.20600002
+offset_left = 15.896
+offset_top = 23.484001
+offset_right = 379.896
+offset_bottom = 142.48401
+text = "M, settings, restart"
+label_settings = SubResource("LabelSettings_tbgi4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="." unique_id=1856072969]
+offset_left = 1575.0
+offset_top = 153.0
+offset_right = 1904.0
+offset_bottom = 793.0
+
+[node name="Label2" type="Label" parent="Button2" unique_id=1269221521]
+layout_mode = 0
+offset_left = -8.0
+offset_right = 328.0
+offset_bottom = 640.0
+text = "Stats"
+label_settings = SubResource("LabelSettings_jyhfs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="." unique_id=573892325]
+offset_left = 1575.0
+offset_top = 818.0
+offset_right = 1904.0
+offset_bottom = 932.0
+
+[node name="Label" type="Label" parent="Button3" unique_id=563590977]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.024
+anchor_top = -0.20600002
+anchor_right = -0.024
+anchor_bottom = -0.20600002
+offset_left = 15.896
+offset_top = 23.484001
+offset_right = 379.896
+offset_bottom = 142.48401
+text = "updates"
+label_settings = SubResource("LabelSettings_tefeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mark1" type="Marker2D" parent="." unique_id=1064955062]
+
+[node name="mark2" type="Marker2D" parent="." unique_id=1334271505]
+position = Vector2(1575, 1059)
