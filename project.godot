@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="bacteria"
+run/main_scene="uid://nplrcem5jc7d"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [autoload]
@@ -29,6 +30,7 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://assets/": "red",
+"res://data/": "green",
 "res://scenes/": "yellow",
 "res://scripts/": "purple"
 }

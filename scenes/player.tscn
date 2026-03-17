@@ -17,7 +17,7 @@ radius = 302.10593
 script = ExtResource("1_qlg0r")
 
 [node name="base" type="Sprite2D" parent="." unique_id=1376039644]
-modulate = Color(0.95686275, 0.06666667, 0.40392157, 1)
+modulate = Color(0.08661903, 0.5726799, 0.7755991, 1)
 texture = ExtResource("2_qlg0r")
 
 [node name="shield" type="Sprite2D" parent="." unique_id=1191891928]
@@ -68,10 +68,11 @@ rotation = -0.7853983
 texture = ExtResource("3_tuyoq")
 
 [node name="shading" type="Sprite2D" parent="." unique_id=697907163]
-modulate = Color(1, 0.23921569, 0.21176471, 1)
+modulate = Color(0.82346964, 0.16001743, 0.5919296, 0.67058825)
 texture = ExtResource("4_qlg0r")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=298501864]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=340701587]
 position = Vector2(0, 9)

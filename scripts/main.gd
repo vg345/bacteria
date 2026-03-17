@@ -1,6 +1,6 @@
 extends Node2D
 
-var dist = 20
+var dist = 5
 @onready var left_limit = %mark1.global_position.x + 50
 @onready var right_limit = %mark2.global_position.x - 50
 @onready var up_limit = %mark1.global_position.y + 50
