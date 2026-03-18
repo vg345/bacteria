@@ -2,19 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cr11dku2surbh" path="res://scripts/bacteria.gd" id="1_lcq1f"]
 [ext_resource type="Texture2D" uid="uid://c548bt337iv6k" path="res://assets/plain_circle.png" id="1_t3sbu"]
+[ext_resource type="Texture2D" uid="uid://c8fj44gyvqfii" path="res://assets/shading2.png" id="3_h2ekr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcq1f"]
 radius = 190.1289
 
 [node name="bacteria" type="Node2D" unique_id=1054603952]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_lcq1f")
 
 [node name="base" type="Sprite2D" parent="." unique_id=1259690285]
 texture = ExtResource("1_t3sbu")
 
-[node name="spokes" type="Node2D" parent="." unique_id=1724376348]
+[node name="shading" type="Sprite2D" parent="." unique_id=1907682022]
+texture = ExtResource("3_h2ekr")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=51943387]
+[node name="spokes" type="Node2D" parent="." unique_id=1724376348]
+unique_name_in_owner = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=51943387 groups=["bacteria"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=236984425]
 position = Vector2(0, 7)

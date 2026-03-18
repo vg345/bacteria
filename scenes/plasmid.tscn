@@ -52,7 +52,8 @@ position = Vector2(-15.000004, 10.00001)
 scale = Vector2(1.0351563, 1.0546875)
 texture = ExtResource("2_kl1lu")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=593399191]
+[node name="Area2D" type="Area2D" parent="." unique_id=593399191 groups=["plasmid"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=523546186]
 position = Vector2(9.536743e-07, -9.536743e-07)

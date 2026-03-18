@@ -17,7 +17,7 @@ radius = 302.10593
 script = ExtResource("1_qlg0r")
 
 [node name="base" type="Sprite2D" parent="." unique_id=1376039644]
-modulate = Color(0.08661903, 0.5726799, 0.7755991, 1)
+modulate = Color(0.43173757, 1, 0.97922426, 1)
 texture = ExtResource("2_qlg0r")
 
 [node name="shield" type="Sprite2D" parent="." unique_id=1191891928]
@@ -68,10 +68,10 @@ rotation = -0.7853983
 texture = ExtResource("3_tuyoq")
 
 [node name="shading" type="Sprite2D" parent="." unique_id=697907163]
-modulate = Color(0.82346964, 0.16001743, 0.5919296, 0.67058825)
+modulate = Color(0.15686275, 0, 1, 0.67058825)
 texture = ExtResource("4_qlg0r")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=298501864]
+[node name="Area2D" type="Area2D" parent="." unique_id=298501864 groups=["player"]]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=340701587]
@@ -83,8 +83,12 @@ visible = false
 shape = SubResource("CircleShape2D_qlg0r")
 
 [node name="spokes" type="Node2D" parent="." unique_id=408216863]
+unique_name_in_owner = true
+modulate = Color(0.3137255, 0.21176471, 1, 1)
 
 [node name="eyes" type="Sprite2D" parent="." unique_id=68282460]
 position = Vector2(11.999998, 4.0000057)
 scale = Vector2(4.3799996, 4.42)
 texture = ExtResource("6_tuyoq")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

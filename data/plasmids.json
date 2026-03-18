@@ -1,3 +1,26 @@
 {
-	
+	"toxin_gen": {
+		"color": "b8ffaf", 
+		"level_up": 0.5, 
+		"negative_chance": 25,
+		"path": "res://assets/type1.png"
+		},
+	"toxin_res": {
+		"color": "e8005c", 
+		"level_up": 0.5, 
+		"negative_chance": 25,
+		"path": "res://assets/type5.png"
+		},
+	"speed": {
+		"color": "2bfcff", 
+		"level_up": 0.5, 
+		"negative_chance": 25,
+		"path":"res://assets/type6.png"
+		},
+	"defense": {
+		"color": "ffa5bd", 
+		"level_up": 0.5, 
+		"negative_chance": 25,
+		"path": "res://assets/shield2.png"
+		}
 }
