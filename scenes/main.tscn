@@ -442,6 +442,7 @@ offset_top = 739.0
 offset_right = 1828.0
 offset_bottom = 852.4007
 rotation = 0.7853982
+action_mode = 0
 
 [node name="Label" type="Label" parent="Controls/up" unique_id=26644167]
 layout_mode = 0
@@ -462,6 +463,7 @@ offset_top = 916.0001
 offset_right = 1823.0001
 offset_bottom = 1029.4009
 rotation = 0.7853982
+action_mode = 0
 
 [node name="Label2" type="Label" parent="Controls/down" unique_id=820419658]
 layout_mode = 0
@@ -481,6 +483,7 @@ offset_top = 828.0001
 offset_right = 1739.0001
 offset_bottom = 941.4008
 rotation = 0.7853982
+action_mode = 0
 
 [node name="Label3" type="Label" parent="Controls/left" unique_id=1162072234]
 layout_mode = 0
@@ -500,6 +503,7 @@ offset_top = 827.0
 offset_right = 1913.0001
 offset_bottom = 940.4007
 rotation = 0.7853982
+action_mode = 0
 
 [node name="Label4" type="Label" parent="Controls/right" unique_id=680593128]
 layout_mode = 0
@@ -686,10 +690,14 @@ vertical_alignment = 1
 [connection signal="timeout" from="despawnTimer" to="." method="_on_despawn_timer_timeout"]
 [connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="attackOverTimer" to="." method="_on_attack_over_timer_timeout"]
-[connection signal="pressed" from="Controls/up" to="." method="_on_up_pressed"]
-[connection signal="pressed" from="Controls/down" to="." method="_on_down_pressed"]
-[connection signal="pressed" from="Controls/left" to="." method="_on_left_pressed"]
-[connection signal="pressed" from="Controls/right" to="." method="_on_right_pressed"]
+[connection signal="button_down" from="Controls/up" to="." method="_on_up_button_down"]
+[connection signal="button_up" from="Controls/up" to="." method="_on_up_button_up"]
+[connection signal="button_down" from="Controls/down" to="." method="_on_down_button_down"]
+[connection signal="button_up" from="Controls/down" to="." method="_on_down_button_up"]
+[connection signal="button_down" from="Controls/left" to="." method="_on_left_button_down"]
+[connection signal="button_up" from="Controls/left" to="." method="_on_left_button_up"]
+[connection signal="button_down" from="Controls/right" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="Controls/right" to="." method="_on_right_button_up"]
 [connection signal="pressed" from="Buttons/restartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Buttons/controlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="Buttons/muteButton" to="." method="_on_mute_button_pressed"]

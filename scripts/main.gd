@@ -11,6 +11,10 @@ var resolved = false
 @onready var down_limit = %mark2.global_position.y - 50
 @onready var pts = {%pt1: Vector2(1,0), %pt2: Vector2(0,1), %pt3: Vector2(0,-1)}
 
+var down = false
+var up = false
+var left = false 
+var right = false
 
 var plasmid_info:Dictionary
 
@@ -61,17 +65,18 @@ func _process(_delta):
 			%healthProgress.modulate = Color("fd3100") 
 		if global.health <= 0 and !global.game_over:
 			game_over()
-		if Input.is_action_pressed("down"):
+		if Input.is_action_pressed("down") or down:
 			%player.global_position.y = min(%player.global_position.y + dist, down_limit)
 		
-		if Input.is_action_pressed("up"):
+		if Input.is_action_pressed("up") or up:
 			%player.global_position.y = max(%player.global_position.y - dist, up_limit)
 		
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") or left:
 			%player.global_position.x = max(%player.global_position.x - dist, left_limit)
 
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") or right:
 			%player.global_position.x = min(%player.global_position.x + dist, right_limit)
+
 		if global.pending:
 			update()
 			global.pending = false
@@ -164,27 +169,6 @@ func _on_controls_button_pressed() -> void:
 		%Controls.visible = true
 		global.controls = true
 
-
-func _on_up_pressed() -> void:
-	if !global.game_over:
-		%player.global_position.y = max(%player.global_position.y - dist, up_limit)
-
-
-func _on_down_pressed() -> void:
-	if !global.game_over:
-		%player.global_position.y = min(%player.global_position.y + dist, down_limit)
-
-
-func _on_left_pressed() -> void:
-	if !global.game_over:
-		%player.global_position.x = max(%player.global_position.x - dist, left_limit)
-
-
-func _on_right_pressed() -> void:
-	if !global.game_over:
-		%player.global_position.x = min(%player.global_position.x + dist, right_limit)
-
-
 func _on_attack_timer_timeout() -> void:
 	if under_attack and !resolved:
 		%attack_audio.play()
@@ -228,3 +212,30 @@ func update_score():
 	%highscore.text = str(int(global.high_score))
 	
 	
+
+
+func _on_up_button_down() -> void:
+	up = true
+
+
+func _on_up_button_up() -> void:
+	up = false
+
+
+func _on_down_button_down() -> void:
+	down = true
+
+func _on_down_button_up() -> void:
+	down = false
+
+func _on_left_button_down() -> void:
+	left = true
+
+func _on_left_button_up() -> void:
+	left = false
+
+func _on_right_button_down() -> void:
+	right = true
+
+func _on_right_button_up() -> void:
+	right = false

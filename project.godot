@@ -31,7 +31,6 @@ window/stretch/mode="viewport"
 folder_colors={
 "res://assets/": "red",
 "res://data/": "green",
-"res://exports/": "orange",
 "res://scenes/": "yellow",
 "res://scripts/": "purple"
 }
@@ -82,3 +81,4 @@ pointing/emulate_touch_from_mouse=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
