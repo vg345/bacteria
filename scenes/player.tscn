@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://yf2dvwjivr4" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://djavp5bg2atrw" path="res://assets/shield2.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://c548bt337iv6k" path="res://assets/plain_circle.png" id="2_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://devyb8aac0tl1" path="res://assets/type1.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c8fj44gyvqfii" path="res://assets/shading2.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dvocwiqoppbai" path="res://assets/eyes.png" id="6_tuyoq"]
 
@@ -13,8 +12,49 @@ radius = 193.02332
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
 radius = 302.10593
 
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.1882353, 0, 1), Color(1, 1, 1, 1), Color(0.8392157, 0.10980392, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.4627451), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
+_data = {
+&"RESET": SubResource("Animation_qlg0r"),
+&"die": SubResource("Animation_tuyoq")
+}
+
 [node name="player" type="Node2D" unique_id=558306380]
+skew = -0.055850532
 script = ExtResource("1_qlg0r")
+
+[node name="spokes" type="Node2D" parent="." unique_id=408216863]
+unique_name_in_owner = true
+position = Vector2(1, 1)
 
 [node name="base" type="Sprite2D" parent="." unique_id=1376039644]
 modulate = Color(0.43173757, 1, 0.97922426, 1)
@@ -26,53 +66,11 @@ modulate = Color(1, 0.8784314, 0.31764707, 0.5019608)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_dqkch")
 
-[node name="border1" type="Sprite2D" parent="." unique_id=48945262]
-visible = false
-texture = ExtResource("3_tuyoq")
-
-[node name="border2" type="Sprite2D" parent="." unique_id=1926588983]
-visible = false
-rotation = 0.7853982
-scale = Vector2(0.9999999, 0.9999999)
-texture = ExtResource("3_tuyoq")
-
-[node name="border3" type="Sprite2D" parent="." unique_id=2106795678]
-visible = false
-rotation = 1.5707964
-texture = ExtResource("3_tuyoq")
-
-[node name="border4" type="Sprite2D" parent="." unique_id=1120075999]
-visible = false
-rotation = 2.5307274
-texture = ExtResource("3_tuyoq")
-
-[node name="border5" type="Sprite2D" parent="." unique_id=264167336]
-visible = false
-rotation = -3.1415925
-texture = ExtResource("3_tuyoq")
-
-[node name="border6" type="Sprite2D" parent="." unique_id=1195619631]
-visible = false
-rotation = -2.3561945
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("3_tuyoq")
-
-[node name="border7" type="Sprite2D" parent="." unique_id=1542501147]
-visible = false
-rotation = -1.5707964
-texture = ExtResource("3_tuyoq")
-
-[node name="border8" type="Sprite2D" parent="." unique_id=1262912712]
-visible = false
-rotation = -0.7853983
-texture = ExtResource("3_tuyoq")
-
 [node name="shading" type="Sprite2D" parent="." unique_id=697907163]
-modulate = Color(0.15686275, 0, 1, 0.67058825)
+modulate = Color(0.15686275, 0, 1, 0.8784314)
 texture = ExtResource("4_qlg0r")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=298501864 groups=["player"]]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=340701587]
 position = Vector2(0, 9)
@@ -82,13 +80,13 @@ shape = SubResource("CircleShape2D_tuyoq")
 visible = false
 shape = SubResource("CircleShape2D_qlg0r")
 
-[node name="spokes" type="Node2D" parent="." unique_id=408216863]
-unique_name_in_owner = true
-modulate = Color(0.3137255, 0.21176471, 1, 1)
-
-[node name="eyes" type="Sprite2D" parent="." unique_id=68282460]
+[node name="eyes" type="Sprite2D" parent="." unique_id=1392852690]
 position = Vector2(11.999998, 4.0000057)
 scale = Vector2(4.3799996, 4.42)
 texture = ExtResource("6_tuyoq")
+
+[node name="AnimationPlayerDeath" type="AnimationPlayer" parent="." unique_id=1015675489]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_fjrip")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

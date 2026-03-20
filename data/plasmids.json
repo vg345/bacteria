@@ -22,5 +22,11 @@
 		"level_up": 0.5, 
 		"negative_chance": 25,
 		"path": "res://assets/shield2.png"
-		}
+		},
+	"health": {
+		"color": "731de8",
+		"level_up": 0.5, 
+		"negative_chance": 25,
+		"path": "res://assets/heart.png"
+	}
 }
