@@ -31,6 +31,7 @@ window/stretch/mode="viewport"
 folder_colors={
 "res://assets/": "red",
 "res://data/": "green",
+"res://exports/": "orange",
 "res://scenes/": "yellow",
 "res://scripts/": "purple"
 }

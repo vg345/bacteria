@@ -3,6 +3,7 @@ extends Node2D
 @export var type: String
 @export var negative = false
 @export var can_dequeue = false
+@export var total = 0
 
 var done = false
 var rot_per_sec = 5

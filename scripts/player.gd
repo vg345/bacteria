@@ -41,7 +41,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			global.pending = true
 			var spoke =  Sprite2D.new() 
 			spoke.texture = spoke_tex
-			#spoke.modulate = plasmid_info[plasmid.type].color
 			if !sub and plasmid.type != "health":
 				spoke.modulate = Color(plasmid_info[plasmid.type].color)
 				%spokes.add_child(spoke)
@@ -49,6 +48,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			update_rotation()
 			if area.is_in_group("plasmid"):
 				plasmid.can_dequeue= true
+			if sub:
+				%bad_pickup.play()
+			else:
+				%good_pickup.play()
 
 	if area.is_in_group("bacteria"):
 		global.health -= 10 - (global.DEFENSE * dict["defense"])/100

@@ -34,7 +34,7 @@ func update():
 	dist = global.BASE_SPEED * %player.dict["speed"]
 	%SpeedValue.text = str(dist)
 	if dist <= 0:
-		game_over()
+		%speedZero.visible = true
 	defense = global.DEFENSE * %player.dict["defense"]
 	%DefenseValue.text = str(defense)
 	toxin_gen = global.TOXIN_GEN * %player.dict["toxin_gen"]
@@ -117,6 +117,7 @@ func _on_despawn_timer_timeout() -> void:
 			child.queue_free()
 
 func game_over():
+	%audio_gameover.play()
 	%spawnTimer.stop()
 	%despawnTimer.stop()
 	global.game_over = true
@@ -126,13 +127,15 @@ func game_over():
 	await %AnimationPlayerStart.animation_finished
 	%gameOver.visible = true
 	
-
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
 
 
 func _on_mute_button_pressed() -> void:
-	pass # Replace with function body.
+	if %bgm.playing:
+		%bgm.stop()
+	else:
+		%bgm.play()
 
 
 func _on_start_button_pressed() -> void:
@@ -184,6 +187,8 @@ func _on_right_pressed() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	if under_attack and !resolved:
+		%attack_audio.play()
+		#%attack_audio.parameters.looping = true
 		var prop = next_attack
 		attack_type = prop
 		next_attack = plasmid_info.keys().pick_random()
@@ -199,9 +204,16 @@ func _on_attack_timer_timeout() -> void:
 		resolved = true
 
 func _on_attack_over_timer_timeout() -> void:
+	global.health = min(100, global.health + 50)
+	%attack_audio.play()
 	for i in %spawned.get_children():
 		if i.type != attack_type:
-			i.queue_free()
+			if i.total == 6:
+				i.reparent(%dead)
+				i.death()
+			else:
+				i.queue_free()
+			
 	%player.attack()
 	for item in %player.dict.keys():
 		if item != attack_type:

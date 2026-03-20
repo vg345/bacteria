@@ -5,6 +5,7 @@ extends Node2D
 @export var total = 6
 @export var direction: Vector2
 @export var can_dequeue = false
+var dead = false
 
 var done = false
 var rot_per_sec = 2
@@ -17,18 +18,25 @@ func setup(path: String):
 		%spokes.add_child(new)
 
 func _process(delta: float) -> void:
-	if !global.game_over:
+	if !global.game_over and !dead:
 		global_position += direction * global.BASE_SPEED
 		global_rotation += rot_per_sec * delta
 		if negative and !done:
 			rot_per_sec *= -1 
 			done = true
 
-
+# for dequeue when out of screen
 func _on_timer_timeout() -> void:
 	can_dequeue = true
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		$AnimationPlayerHit.play("contact")
+	if !dead:
+		if area.is_in_group("player"):
+			$AnimationPlayerHit.play("contact")
+		
+func death():
+	dead = true
+	$AnimationPlayerDeath.play("death")
+	await $AnimationPlayerDeath.animation_finished
+	queue_free()

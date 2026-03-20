@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://djavp5bg2atrw" path="res://assets/shield2.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://c548bt337iv6k" path="res://assets/plain_circle.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://c8fj44gyvqfii" path="res://assets/shading2.png" id="4_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://lmqi3qxvs35c" path="res://assets/music_box_chime_quick.wav" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dvocwiqoppbai" path="res://assets/eyes.png" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://cq1t5722bswq4" path="res://assets/music_box_negative_quick.wav" id="7_smehm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tuyoq"]
 radius = 193.02332
@@ -49,7 +51,6 @@ _data = {
 }
 
 [node name="player" type="Node2D" unique_id=558306380]
-skew = -0.055850532
 script = ExtResource("1_qlg0r")
 
 [node name="spokes" type="Node2D" parent="." unique_id=408216863]
@@ -88,5 +89,15 @@ texture = ExtResource("6_tuyoq")
 [node name="AnimationPlayerDeath" type="AnimationPlayer" parent="." unique_id=1015675489]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_fjrip")
+
+[node name="good_pickup" type="AudioStreamPlayer2D" parent="." unique_id=1375335450]
+unique_name_in_owner = true
+stream = ExtResource("6_fjrip")
+volume_db = 7.0
+
+[node name="bad_pickup" type="AudioStreamPlayer2D" parent="." unique_id=1898311766]
+unique_name_in_owner = true
+stream = ExtResource("7_smehm")
+volume_db = 7.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

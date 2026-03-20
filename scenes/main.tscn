@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://343vb1frsr3w" path="res://assets/restart.png" id="5_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://b1ynd10ms2wv6" path="res://assets/controls.png" id="6_tipki"]
 [ext_resource type="Texture2D" uid="uid://corkb5n2fy70y" path="res://assets/mute.png" id="7_85g3d"]
+[ext_resource type="AudioStream" uid="uid://bm0e4omar1nyt" path="res://assets/Sketchbook 2025-11-23.ogg" id="9_85g3d"]
+[ext_resource type="AudioStream" uid="uid://boidnnrcpkmbi" path="res://assets/steel_drums_negative_long.wav" id="9_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://i2b7t2e4b24w" path="res://assets/music_box_negative_long.wav" id="10_choun"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
 shader = ExtResource("3_tipki")
@@ -48,6 +51,12 @@ font_size = 50
 font_color = Color(0.68307734, 0.6830774, 0.68307734, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_trceg"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8y0u"]
+font_size = 75
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbgi4"]
 font_size = 40
 
 [sub_resource type="Animation" id="Animation_tefeu"]
@@ -134,12 +143,6 @@ _data = {
 &"start": SubResource("Animation_o6xl0")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_a8y0u"]
-font_size = 75
-
-[sub_resource type="LabelSettings" id="LabelSettings_tbgi4"]
-font_size = 40
-
 [sub_resource type="Animation" id="Animation_tipki"]
 length = 0.001
 tracks/0/type = "value"
@@ -175,6 +178,9 @@ _data = {
 &"RESET": SubResource("Animation_tipki"),
 &"attack": SubResource("Animation_85g3d")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ld40"]
+font_size = 50
 
 [node name="main" type="Node2D" unique_id=1435284343]
 script = ExtResource("1_o5qli")
@@ -398,6 +404,9 @@ position = Vector2(740, -79)
 unique_name_in_owner = true
 position = Vector2(1091, 1148)
 
+[node name="dead" type="Node2D" parent="." unique_id=524314763]
+unique_name_in_owner = true
+
 [node name="player" parent="." unique_id=1775131467 instance=ExtResource("4_jyhfs")]
 unique_name_in_owner = true
 position = Vector2(1012, 533)
@@ -419,7 +428,7 @@ autostart = true
 
 [node name="attackOverTimer" type="Timer" parent="." unique_id=1782099343]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Controls" type="Node2D" parent="." unique_id=275557539]
@@ -586,10 +595,6 @@ label_settings = SubResource("LabelSettings_trceg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayerStart" type="AnimationPlayer" parent="." unique_id=1860922555]
-unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_tipki")
-
 [node name="gameOver" type="Node2D" parent="." unique_id=273486354]
 unique_name_in_owner = true
 visible = false
@@ -627,9 +632,55 @@ label_settings = SubResource("LabelSettings_tbgi4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AnimationPlayerStart" type="AnimationPlayer" parent="." unique_id=1860922555]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_tipki")
+
 [node name="AnimationPlayerAttack" type="AnimationPlayer" parent="." unique_id=725991480]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_choun")
+
+[node name="attack_audio" type="AudioStreamPlayer2D" parent="." unique_id=1581343013]
+unique_name_in_owner = true
+stream = ExtResource("9_ya4ey")
+volume_db = 10.0
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="." unique_id=1225438753]
+unique_name_in_owner = true
+stream = ExtResource("9_85g3d")
+volume_db = 5.0
+autoplay = true
+parameters/looping = true
+
+[node name="audio_gameover" type="AudioStreamPlayer2D" parent="." unique_id=1003656329]
+unique_name_in_owner = true
+stream = ExtResource("10_choun")
+volume_db = 5.0
+
+[node name="speedZero2" type="Node2D" parent="." unique_id=1620676881]
+unique_name_in_owner = true
+visible = false
+
+[node name="restart_speed" type="Button" parent="speedZero2" unique_id=1375956371]
+anchors_preset = -1
+anchor_left = 0.38300002
+anchor_top = 0.134
+anchor_right = 0.38300002
+anchor_bottom = 0.134
+offset_left = 821.0
+offset_top = 16.0
+offset_right = 1057.0
+offset_bottom = 152.0
+
+[node name="label" type="Label" parent="speedZero2" unique_id=21210233]
+offset_left = 513.0
+offset_top = -40.0
+offset_right = 1333.7991
+offset_bottom = 214.39664
+text = "No speed. Restart? or Wait?"
+label_settings = SubResource("LabelSettings_0ld40")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="despawnTimer" to="." method="_on_despawn_timer_timeout"]
@@ -644,3 +695,4 @@ libraries/ = SubResource("AnimationLibrary_choun")
 [connection signal="pressed" from="Buttons/muteButton" to="." method="_on_mute_button_pressed"]
 [connection signal="pressed" from="petridish/startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="gameOver/gameOverButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="speedZero2/restart_speed" to="." method="_on_restart_button_pressed"]
